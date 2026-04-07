@@ -1,0 +1,40 @@
+.circle-section {
+    background: #eceff9;
+    position: absolute;
+    bottom: 9%;
+    left: 60%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+
+    #circle {
+        position: absolute;
+        overflow: hidden;
+        bottom: 9%;
+        left: 10%;
+        background: #eceff9;
+        border-radius: 50%;
+        fill: blue;
+        border: 1px solid blue;
+    }
+
+    #circle text {
+        font-size: 11px;
+        font-weight: 400;
+    }
+
+    #circle svg {
+        animation: rotateText 10s linear infinite;
+    }
+
+    @keyframes rotateText {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
