@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import Image from "next/image";
+import Clogo from "@/public/images/aurumailogo.png";
 
 const navItems = [
 	{ label: "Home", href: "/" },
@@ -53,11 +54,13 @@ export default function Navbar() {
 		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
 
-	// Close drawer on route change
-	useEffect(() => {
+	// Reset drawer/dropdown when route changes (React-recommended render-time state reset)
+	const [prevPathname, setPrevPathname] = useState(pathname);
+	if (prevPathname !== pathname) {
+		setPrevPathname(pathname);
 		setIsMenuOpen(false);
 		setOpenDropdown(null);
-	}, [pathname]);
+	}
 
 	// Lock body scroll when drawer is open
 	useEffect(() => {
@@ -71,8 +74,8 @@ export default function Navbar() {
 		<>
 			<header
 				className={`fixed inset-x-0 top-0 z-60 flex items-center justify-between gap-4 px-4 py-3 backdrop-blur-sm transition-all duration-300 sm:px-8 lg:px-10 ${isScrolled
-						? "border-b border-white/70 bg-white/85 shadow-[0_18px_40px_-32px_rgba(15,23,42,0.25)]"
-						: "border-b border-transparent bg-transparent shadow-none"
+					? "border-b border-white/70 bg-white/85 shadow-[0_18px_40px_-32px_rgba(15,23,42,0.25)]"
+					: "border-b border-transparent bg-transparent shadow-none"
 					}`}
 			>
 				{/* Hamburger — mobile only */}
@@ -96,7 +99,7 @@ export default function Navbar() {
 								<Link
 									key={item.label}
 									href={item.href ?? "#"}
-									className={`inline-flex items-center gap-1 text-[14px] font-medium ${isActive ? "text-(--accent-color)" : "text-[#8d93a1] hover:text-[#2e3240]"}`}							>
+									className={`inline-flex items-center gap-1 text-[14px] font-medium ${isActive ? "text-(--accent-color)" : "text-black hover:text-[#ff5f38]"}`}							>
 									<span>{item.label}</span>
 								</Link>
 							);
@@ -105,7 +108,7 @@ export default function Navbar() {
 							<div key={item.label} className="group relative">
 								<Link
 									href={item.href ?? "#"}
-									className={`inline-flex items-center gap-1 text-[14px] font-medium transition ${isActive ? "text-(--accent-color)" : "text-[#8d93a1] hover:text-[#2e3240]"}`}
+									className={`inline-flex items-center gap-1 text-[14px] font-medium transition ${isActive ? "text-(--accent-color)" : "text-black hover:text-[#ff5f38]"}`}
 								>
 									<span>{item.label}</span>
 									<span className="transition-transform group-hover:rotate-180 group-focus-within:rotate-180">
@@ -135,16 +138,19 @@ export default function Navbar() {
 				</nav>
 
 				{/* Logo */}
-				{/* <Image
-						src="/images/logo.png"
-						alt="IndishaTech"
-						width={130}
-						height={50}
-						className="h-9 w-auto object-contain"
-					/> */}
-				<div className="text-[34px] font-semibold tracking-[-0.05em] text-[#0b0d14] sm:text-[42px]">
-					indishaTech
+				<div style={{marginRight:"8rem"}}>
+					<Image
+						src={Clogo}
+						alt="aurumxai"
+						width={360}
+						height={180}
+						className="h-13 w-auto object-contain"
+					/>
 				</div>
+
+				{/* <div className="text-[34px] font-semibold tracking-[-0.05em] text-[#0b0d14] sm:text-[42px]">
+					aurumxai
+				</div> */}
 
 				{/* CTA buttons */}
 				<div className="flex items-center gap-2 sm:gap-3">
@@ -159,9 +165,9 @@ export default function Navbar() {
 						className="inline-flex items-center gap-2 rounded-full bg-(--accent-color) px-4 py-2 text-[14px] font-medium text-white shadow-[0_20px_35px_-22px_rgba(240,140,84,0.9)] sm:px-5"
 					>
 						<span className="hidden sm:inline">Get started</span>
-						<span aria-hidden="true">
+						{/* <span aria-hidden="true">
 							<ChevronRight size={16} />
-						</span>
+						</span> */}
 					</Link>
 				</div>
 			</header>
@@ -183,13 +189,13 @@ export default function Navbar() {
 				<div className="flex items-center justify-between border-b border-[#f0f2f5] px-5 py-4">
 					{/* <Image
 						src="/images/logo.png"
-						alt="IndishaTech"
+						alt="aurumxai"
 						width={130}
 						height={50}
 						className="h-9 w-auto object-contain"
 					/> */}
 					<div className="text-[34px] font-semibold tracking-[-0.05em] text-[#0b0d14] sm:text-[42px]">
-						indishaTech
+						aurumxai
 					</div>
 					<button
 						onClick={() => setIsMenuOpen(false)}
@@ -214,8 +220,8 @@ export default function Navbar() {
 									key={item.label}
 									href={item.href ?? "#"}
 									className={`flex items-center rounded-xl px-3 py-2.5 text-[14px] font-medium transition ${isActive
-											? "bg-[#fff4eb] text-(--accent-color)"
-											: "text-[#4d5465] hover:bg-[#f5f6f8] hover:text-[#1e2330]"
+										? "bg-[#fff4eb] text-(--accent-color)"
+										: "text-[#4d5465] hover:bg-[#f5f6f8] hover:text-[#1e2330]"
 										}`}
 								>
 									{item.label}
@@ -228,8 +234,8 @@ export default function Navbar() {
 								<button
 									onClick={() => setOpenDropdown(isOpen ? null : item.label)}
 									className={`flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-[14px] font-medium transition ${isActive
-											? "bg-[#fff4eb] text-(--accent-color)"
-											: "text-[#4d5465] hover:bg-[#f5f6f8] hover:text-[#1e2330]"
+										? "bg-[#fff4eb] text-(--accent-color)"
+										: "text-[#4d5465] hover:bg-[#f5f6f8] hover:text-[#1e2330]"
 										}`}
 								>
 									<span>{item.label}</span>

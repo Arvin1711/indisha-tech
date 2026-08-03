@@ -4,8 +4,9 @@ import Footer from "@/components/Footer";
 import Subscribe from "@/sections/Subscribe";
 
 export const metadata = {
-	title: "Contact — Verovio",
-	description: "Contact Verovio for support, product guidance, and partnership inquiries.",
+	title: "Our Company — aurumxai",
+  description:
+    "Learn how aurumxai designs and builds scalable software products for startups and enterprises.",
 };
 
 export default function ContactPage() {

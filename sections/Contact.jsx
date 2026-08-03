@@ -11,23 +11,23 @@ export default function Contact() {
             <section className="">
                 <div className="">
                     <div className="py-16 text-center">
-                        <h1 className="text-[32px] font-semibold leading-[0.99] tracking-[-0.07em] text-[#0d0f17] sm:text-[48px] md:text-[52px] lg:text-[72px] xl:text-[86px]">
-                            <span className="font-[Georgia,serif] font-normal italic text-[#f08c54]">Building</span>{" "}
-                            Better Products
-                            <br />
-                            With{" "}
-                            <span className="font-[Georgia,serif] font-normal italic text-[#f08c54]">Modern Engineering</span>
+                        <h1 className="mx-auto mt-16 text-[36px] font-normal leading-[1.357] tracking-[-0.07em] text-[#0d0f17] sm:text-[60px] sm:tracking-[-0.07em] md:text-[58px] lg:text-[58px] xl:text-[58px]">
+                            <span className="font-[Georgia,serif] font-normal italic text-(--accent-color)">Smart Engineering</span>{" "}
+                            <span className="inline-block">Building Better</span>
+                            <br className="hidden sm:block" />
+                            <span className="block sm:inline">Products With{" "}</span>
+                            <span className="font-[Georgia,serif] font-normal italic text-(--accent-color)">Modern Engineering</span>
                         </h1>
 
-                        <p className="mx-auto mt-10 max-w-150 text-[14px] leading-[1.7] text-[#62647b] sm:mt-10 sm:text-[16px]">
-                            indishaTech helps startups and enterprises design, build, and scale reliable software products that drive measurable business results.
+                        <p className="mx-auto mt-10 max-w-150 text-[14px] leading-[1.7] text-(--muted-color) sm:mt-6 sm:text-[16px]">
+                            aurumxai helps startups and enterprises design, build, and scale reliable software products that drive measurable business results.
                         </p>
                     </div>
 
                     <div className="mx-auto max-w-340 px-4 sm:px-6 lg:px-8 grid gap-7 p-5 sm:p-7 lg:grid-cols-[1.2fr_0.95fr] lg:gap-8 lg:p-8">
                         <div>
-                            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#a1a8b5]">Contact us</p>
-                            <h2 className="mt-2 max-w-sm text-[28px] font-semibold leading-[1.02] tracking-[-0.03em] text-[#141926] sm:text-[28px]">
+                            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-(--accent-color)">Contact us</p>
+                            <h2 className="mt-2 max-w-sm text-[28px] font-semibold leading-[1.2] tracking-[-0.03em] text-[#141926] sm:text-[28px]">
                                 Let&apos;s Build Your Next Software Project
                             </h2>
                             <p className="mt-4 max-w-md text-[14px] sm:text-[14px] leading-normal text-[#62647b]">
@@ -38,9 +38,9 @@ export default function Contact() {
                                 <div>
                                     <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#9aa2b0]">Address</p>
                                     <p className="mt-2 leading-[1.55]">
-                                        8th Floor, Innovation Hub
+                                        Yanuma Tower, 2nd Floor
                                         <br />
-                                        Jakarta Digital District
+                                        New Delhi, India 110001
                                     </p>
                                 </div>
                                 <div>
@@ -53,14 +53,14 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#9aa2b0]">Email</p>
-                                    <a href="mailto:hello@indishaTech.dev" className="mt-2 inline-block text-[#2b3240] hover:text-[#f08c54]">
-                                        hello@indishaTech.dev
+                                    <a href="mailto:hello@aurumxai.dev" className="mt-2 inline-block text-[#2b3240] hover:text-[#f08c54]">
+                                        info@aurumxai.com
                                     </a>
                                 </div>
                                 <div>
                                     <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#9aa2b0]">Phone</p>
-                                    <a href="tel:+622112345678" className="mt-2 inline-block text-[#2b3240] hover:text-[#f08c54]">
-                                        +62 21 1234 5678
+                                    <a href="tel:+919885432100" className="mt-2 inline-block text-[#2b3240] hover:text-[#f08c54]">
+                                        +91 988-543-2100
                                     </a>
                                 </div>
                             </div>

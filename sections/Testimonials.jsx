@@ -3,7 +3,7 @@ import { Quote } from "lucide-react";
 const testimonials = [
 	{
 		quote:
-			"indishaTech helped us modernize our legacy platform without disrupting daily operations. Their team delivered clean architecture, fast iterations, and dependable communication throughout the project.",
+			"aurumxai helped us modernize our legacy platform without disrupting daily operations. Their team delivered clean architecture, fast iterations, and dependable communication throughout the project.",
 		name: "Alicia Morgan",
 		role: "Head of Engineering",
 		company: "NorthBridge Tech",
@@ -11,7 +11,7 @@ const testimonials = [
 	},
 	{
 		quote:
-			"From product discovery to release, indishaTech felt like an extension of our internal team. They translated complex requirements into a polished app our customers adopted quickly.",
+			"From product discovery to release, aurumxai felt like an extension of our internal team. They translated complex requirements into a polished app our customers adopted quickly.",
 		name: "Daniel Reeves",
 		role: "Product Director",
 		company: "Streamline Health",
@@ -27,7 +27,7 @@ const testimonials = [
 	},
 	{
 		quote:
-			"indishaTech redesigned our web platform and rebuilt the backend APIs for scale. The result was faster load times, lower infrastructure costs, and happier users.",
+			"aurumxai redesigned our web platform and rebuilt the backend APIs for scale. The result was faster load times, lower infrastructure costs, and happier users.",
 		name: "Marcus Lee",
 		role: "CTO",
 		company: "RetailNova",
@@ -43,7 +43,7 @@ const testimonials = [
 	},
 	{
 		quote:
-			"We trusted indishaTech to build our MVP under a tight timeline. They delivered a production-ready product that helped us secure our next round of funding.",
+			"We trusted aurumxai to build our MVP under a tight timeline. They delivered a production-ready product that helped us secure our next round of funding.",
 		name: "Noah Bennett",
 		role: "Founder",
 		company: "CloudSprint",
@@ -56,9 +56,9 @@ const secondRow = testimonials.slice(3);
 
 function RatingRow() {
 	return (
-		<div className="testimonials-rating mt-6 flex items-center justify-center gap-4 text-[20px] font-semibold text-slate-600">
+		<div className="testimonials-rating mt-6 flex items-center justify-center gap-2 text-[20px] font-semibold text-slate-600 hidden">
 			<div className="grid h-8 w-8 place-items-center rounded-full bg-(--accent-color) text-xs font-bold text-white">CL</div>
-			<div className="flex gap-1 text-(--accent-color)" aria-label="5.0 out of 5 stars">
+			<div className="flex gap-0 text-(--accent-color)" aria-label="5.0 out of 5 stars">
 				<span>★</span>
 				<span>★</span>
 				<span>★</span>
@@ -111,15 +111,20 @@ function MarqueeRow({ items, reverse = false }) {
 
 export default function Testimonials() {
 	return (
-		<section 
-		// className="testimonials-section relative overflow-hidden bg-[linear-gradient(180deg,#f9f9fd_0%,#f9fbff_55%,#f8fcfb_100%)] py-20"
-		className="testimonials-section relative overflow-hidden bg-white py-20">
+		<section
+			// className="testimonials-section relative overflow-hidden bg-[linear-gradient(180deg,#f9f9fd_0%,#f9fbff_55%,#f8fcfb_100%)] py-20"
+			className="testimonials-section relative overflow-hidden bg-white py-20">
 			<div className="mx-auto max-w-330 px-4 sm:px-8">
 				<header className="text-center">
-					<h2 className="testimonials-title text-[32px] font-semibold tracking-[0.01em] text-slate-900 sm:text-[32px] lg:text-[36px]">
-						Client <span className="bg-linear-to-r from-(--accent-color) to-(--accent-color) bg-clip-text text-transparent">Success Stories</span>
-					</h2>
-					<p className="testimonials-subtitle mx-auto mt-5 max-w-3xl text-slate-500 sm:text-lg">
+					<p className="mb-4 inline-flex items-center gap-4 text-[10px] font-bold tracking-[0.08em] text-(--accent-color) sm:text-[12px]">
+						<span aria-hidden="true">&larr;</span>
+						TESTIMONIALS
+						<span aria-hidden="true">&rarr;</span>
+					</p>
+					<h2 className="mt-4 text-[28px] font-bold tracking-[-0.02em] text-[#0d1226] sm:text-[28px] lg:text-[28px]">
+                        Client Success Stories
+                    </h2>
+					<p className="testimonials-subtitle mx-auto mt-5 max-w-3xl text-slate-500 sm:text-md">
 						Trusted by teams that need reliable software delivery, scalable engineering, and measurable product outcomes.
 					</p>
 					<RatingRow />

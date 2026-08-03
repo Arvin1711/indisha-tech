@@ -1,4 +1,6 @@
 import { subscribeAction } from "@/app/actions/subscribe";
+import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 const experts = [
 	"https://randomuser.me/api/portraits/women/44.jpg",
@@ -58,39 +60,40 @@ export default function Subscribe({ status }) {
 						<span className="subscribe-helper text-sm text-[#606773] sm:text-base">Our engineering team is ready to help!</span>
 						<div className="flex">
 							{experts.map((src, index) => (
-								<img
+								<Image
 									key={src}
 									src={src}
 									alt="Expert avatar"
+									width={32}
+									height={32}
 									className={`h-8 w-8 rounded-full border-2 border-[#f3f3f5] object-cover ${index ? "-ml-2" : ""}`}
-									loading="lazy"
 								/>
 							))}
 						</div>
 					</div>
 				</div>
 
-				<article className="subscribe-cta relative mt-28 overflow-hidden rounded-[28px] bg-linear-to-r from-[#1239f3] via-[#4c60ef] to-[#95a5f3] px-7 py-12 sm:px-12 sm:py-16 -mb-5.5">
+				<article className="subscribe-cta relative mt-28 overflow-hidden rounded-[28px] bg-linear-to-br from-(--accent-color) to-[#f98265] px-7 py-12 sm:px-12 sm:py-16 -mb-5.5">
 					<div className="relative z-10 max-w-190">
 						<h2 className="subscribe-cta-title text-[28px] font-medium leading-[1.1] text-white sm:text-[32px] md:text-[32px]">
 							Build Your Next Software Product With Us
 						</h2>
-						<p className="subscribe-cta-subtitle mt-3 text-base text-blue-100 sm:text-[14px]">
+						<p className="subscribe-cta-subtitle mt-3 text-base text-white sm:text-[14px]">
 							We help startups and enterprises design, develop, and scale secure digital products with speed and precision.
 						</p>
 
 						<div className="mt-8 flex flex-wrap items-center gap-6">
-							<button className="subscribe-cta-primary rounded-full bg-[#10229a] px-5 py-2 text-sm font-medium text-white transition hover:bg-[#0c1a77] sm:text-[14px]">
+							<button className="subscribe-cta-primary font-bold rounded-full bg-[#131927] px-5 py-3 text-xs text-white transition hover:bg-[#131927]">
 								Start Your Project
 							</button>
-							<a href="#" className="subscribe-cta-link text-sm text-white hover:underline sm:text-[14px]">
-								View Our Work ↗
+							<a href="#" className="subscribe-cta-link text-xs font-bold text-white hover:underline flex items-center gap-1">
+								View Our Work <ArrowUpRight size={18} />
 							</a>
 						</div>
 					</div>
 
 					<div className="pointer-events-none absolute right-0 bottom-0 hidden h-full w-[39%] items-end justify-end sm:flex">
-						<span className="absolute right-[6%] bottom-0 text-[390px] font-semibold leading-[0.82] text-white/72">M</span>
+						<span className="absolute right-[6%] bottom-0 text-[390px] font-semibold leading-[0.82] text-white/72">ai</span>
 						{/* <img
 							src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80"
 							alt="Legal expert"

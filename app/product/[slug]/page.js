@@ -94,7 +94,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const content = productContent[slug];
   if (!content) return {};
-  return { title: `${content.label} — Verovio` };
+  return { title: `${content.label}` };
 }
 
 export default async function ProductPage({ params }) {
@@ -109,7 +109,7 @@ export default async function ProductPage({ params }) {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#f7f5f2] pb-20 pt-24">
+      <main className="min-h-screen bg-[#ffffff] pb-20 pt-24">
         {/* Page header */}
         <section className="mx-auto max-w-5xl px-6 pt-10 lg:px-10">
           <span className="inline-flex items-center gap-2 rounded-full border border-[#f0c89a] bg-[#fff4eb] px-4 py-1.5 text-[13px] font-medium text-[#c96e20]">

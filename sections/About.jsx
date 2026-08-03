@@ -1,8 +1,9 @@
+import Image from "next/image";
 const serviceCards = [
     {
         title: "Full-Stack Development",
         icon: (
-            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 text-[#3e56f6]">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 text-[#f08c54]">
                 <path d="M8 8h8M8 12h6M8 16h4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
                 <rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" strokeWidth="1.8" />
             </svg>
@@ -11,7 +12,7 @@ const serviceCards = [
     {
         title: "UI/UX & Product Design",
         icon: (
-            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 text-[#3e56f6]">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 text-[#f08c54]">
                 <path d="M7 16.2l2.8-2.8 2.2 2.2 4.2-4.2" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M13.8 11.4h2.4v2.4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="7" cy="7" r="2.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
@@ -57,7 +58,7 @@ export default function About() {
                                 className="text-[9px] font-extralight tracking-[0.14em] uppercase sm:text-[10px] lg:text-[11px]"
                             >
                                 <textPath href="#aboutRingPath" startOffset="50%" textAnchor="middle">
-                                    • About indishaTech • About indishaTech • About indishaTech
+                                    • About aurumxai • About aurumxai • About aurumxai
                                 </textPath>
                             </text>
                         </svg>
@@ -68,29 +69,35 @@ export default function About() {
 
                     </div>
                     <div className="overflow-hidden rounded-[26px] shadow-[0_22px_56px_-34px_rgba(3,11,44,0.72)]">
-                        <img
+                        <div className="relative h-80 w-full sm:h-112.5">
+                        <Image
                             src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80"
                             alt="Engineer working at a workstation"
-                            className="h-80 w-full object-cover sm:h-112.5"
-                            loading="lazy"
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            className="object-cover"
                         />
+                    </div>
                     </div>
 
 
                     <div className="absolute -bottom-7 -right-1 w-[58%] overflow-hidden rounded-3xl border-6 border-[#f4f7ff] shadow-[0_22px_46px_-30px_rgba(0,0,0,0.55)] sm:-right-4 sm:-bottom-8 sm:w-[52%] sm:border-8 lg:-right-14">
-                        <img
-                            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80"
-                            alt="Team collaborating on a laptop"
-                            className="h-40 w-full object-cover sm:h-52"
-                            loading="lazy"
-                        />
+                        <div className="relative h-40 w-full sm:h-52">
+                            <Image
+                                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80"
+                                alt="Team collaborating on a laptop"
+                                fill
+                                sizes="(max-width: 768px) 58vw, 400px"
+                                className="object-cover"
+                            />
+                        </div>
                     </div>
                 </div>
 
                 <div className="pb-10 sm:pb-18 lg:pb-2">
                     <p className="inline-flex items-center gap-4 text-[10px] font-semibold tracking-[0.09em] text-[#e8ecff] uppercase sm:text-[11px]">
                         <span aria-hidden="true">←</span>
-                        About indishaTech
+                        About aurumxai
                         <span aria-hidden="true">→</span>
                     </p>
 
@@ -98,8 +105,8 @@ export default function About() {
                         We Build Software That Scales With Your Business
                     </h2>
 
-                    <p className="mt-6 max-w-165 text-[13px] leading-[1.7] text-[#e5e9ff] sm:text-[15px]">
-                        indishaTech is a software development studio that partners with startups and enterprises to design, build, and scale digital products. We bring together product thinking, clean engineering, and a culture of ownership to ship software that works — on time and on spec.
+                    <p className="mt-6 max-w-165 text-sm text-[#e5e9ff] sm:text-sm">
+                        aurumxai is a software development studio that partners with startups and enterprises to design, build, and scale digital products. We bring together product thinking, clean engineering, and a culture of ownership to ship software that works — on time and on spec.
                     </p>
 
                     <div className="mt-7 grid gap-3 sm:grid-cols-2 sm:gap-4">
@@ -108,16 +115,16 @@ export default function About() {
                                 <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/1 shadow-[0_8px_20px_-14px_rgba(0,0,0,0.55)]">
                                     {card.icon}
                                 </div>
-                                <h3 className={`font-medium leading-tight text-white ${index === 1 ? "text-[16px]" : "text-[14px]"}`}>{card.title}</h3>
+                                <h3 className={`font-medium leading-tight text-white ${index === 1 ? "text-[14px]" : "text-[14px]"}`}>{card.title}</h3>
                             </article>
                         ))}
                     </div>
 
-                    <div className="mt-9 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-8">
+                    <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-8">
                         {stats.map((item) => (
                             <div key={item.label} className="px-1 py-2 sm:px-0 sm:py-0">
                                 <p className="text-[24px] font-semibold leading-none tracking-[-0.03em] text-white sm:text-[30px]">{item.value}</p>
-                                <p className="mt-2 text-[13px] leading-[1.45] text-[#e0e6ff] sm:text-[16px]">{item.label}</p>
+                                <p className="mt-2 text-xs text-[#e0e6ff] sm:text-xs">{item.label}</p>
                             </div>
                         ))}
                     </div>

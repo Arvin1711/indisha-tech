@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import logoIcon from "@/public/images/logo_icon.png";
+import { FacebookIcon, InstagramIcon, YouTubeIcon, LinkedInIcon } from "@/public/images/svgicons/SvgIcons";
 
 const productLinks = [
 	{ label: "Application hosting", href: "#" },
@@ -27,7 +30,7 @@ const legalLinks = [
 	{ label: "Terms of service", href: "#" },
 ];
 
-const THEME_STORAGE_KEY = "indishaTech-theme-mode";
+const THEME_STORAGE_KEY = "aurumxai-theme-mode";
 
 function resolveTheme(mode) {
 	if (mode === "light") {
@@ -53,9 +56,9 @@ function applyTheme(mode) {
 
 function ExternalLink({ label, href = "#" }) {
 	return (
-		<a href={href} className="group inline-flex items-center gap-1 text-sm text-slate-300 transition hover:text-white">
+		<a href={href} className="group inline-flex items-center gap-1 text-xs text-slate-300 transition hover:text-(--accent-color)">
 			<span>{label}</span>
-			<span className="text-[10px] text-slate-500 transition group-hover:text-slate-300">↗</span>
+			<span className="text-[10px] text-slate-500 transition group-hover:text-slate-300 hidden">↗</span>
 		</a>
 	);
 }
@@ -65,7 +68,7 @@ function SocialIcon({ children, label }) {
 		<a
 			href="#"
 			aria-label={label}
-			className="grid h-7 w-7 place-items-center rounded-md text-sm text-[#f1a45a] transition hover:bg-white/5 hover:text-[#ffbf7a]"
+			className="grid h-7 w-7 place-items-center rounded-md text-xs text-[#ff5f38] transition hover:bg-white/5 hover:text-[#ffbf7a]"
 		>
 			{children}
 		</a>
@@ -73,14 +76,21 @@ function SocialIcon({ children, label }) {
 }
 
 export default function Footer() {
-	const [themeMode, setThemeMode] = useState("system");
+	// Initialise from localStorage so no effect-driven setState is needed
+	const [themeMode, setThemeMode] = useState(() =>
+		typeof window !== "undefined"
+			? (localStorage.getItem(THEME_STORAGE_KEY) || "system")
+			: "system"
+	);
 	const currentYear = new Date().getFullYear();
 
+	// Apply theme whenever themeMode changes (including first mount)
 	useEffect(() => {
-		const storedThemeMode = localStorage.getItem(THEME_STORAGE_KEY) || "system";
-		setThemeMode(storedThemeMode);
-		applyTheme(storedThemeMode);
+		applyTheme(themeMode);
+	}, [themeMode]);
 
+	// Listen for OS-level colour-scheme changes
+	useEffect(() => {
 		const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 		const handleSystemThemeChange = () => {
 			if ((localStorage.getItem(THEME_STORAGE_KEY) || "system") === "system") {
@@ -89,10 +99,7 @@ export default function Footer() {
 		};
 
 		mediaQuery.addEventListener("change", handleSystemThemeChange);
-
-		return () => {
-			mediaQuery.removeEventListener("change", handleSystemThemeChange);
-		};
+		return () => mediaQuery.removeEventListener("change", handleSystemThemeChange);
 	}, []);
 
 	const selectTheme = (nextMode) => {
@@ -107,34 +114,40 @@ export default function Footer() {
 				<div className="grid gap-10 lg:grid-cols-[1.7fr_1fr_1fr_1fr_0.9fr] lg:gap-8">
 					<section>
 						<div className="flex items-center gap-3">
-							<div className="grid h-11 w-11 place-items-center rounded-lg bg-(--accent-color) text-base font-extrabold text-[#101522]">L</div>
-							<h2 className="text-[30px] font-semibold tracking-tight text-white">indishaTech</h2>
+							<Image
+								src={logoIcon}
+								alt="aurumxai logo"
+								width={44}
+								height={44}
+								className="h-11 w-11 rounded-lg object-contain"
+							/>
+							<h2 className="text-[26px] font-semibold tracking-tight text-white">aurumxai</h2>
 						</div>
 
-						<p className="mt-6 max-w-md text-[14px] leading-7 text-slate-300">
+						<p className="mt-6 max-w-md text-xs text-slate-300">
 							We are a software development company building scalable web and mobile products for startups and enterprises.
 							From strategy to deployment, we help teams ship faster with confidence.
 						</p>
 
 						{/* <p className="mt-7 text-[15px] text-slate-300">
-							indishaTech is your partner for product design, engineering, and long-term software growth.
+							aurumxai is your partner for product design, engineering, and long-term software growth.
 						</p> */}
 					</section>
 
 					<nav>
-						<h3 className="text-[16px] font-semibold text-white">Products</h3>
-						<ul className="mt-5 space-y-3">
+						<h3 className="text-sm font-semibold text-white">Products</h3>
+						<ul className="mt-5 space-y-2">
 							{productLinks.map(({ label, href }) => (
 								<li key={label}>
-									<a href={href} className="text-sm text-slate-300 transition hover:text-white">{label}</a>
+									<a href={href} className="text-xs text-slate-300 transition hover:text-(--accent-color)">{label}</a>
 								</li>
 							))}
 						</ul>
 					</nav>
 
 					<nav>
-						<h3 className="text-[16px] font-semibold text-white">Resources</h3>
-						<ul className="mt-5 space-y-3">
+						<h3 className="text-sm font-semibold text-white">Resources</h3>
+						<ul className="mt-5 space-y-2">
 							{resourceLinks.map(({ label, href }) => (
 								<li key={label}>
 									<ExternalLink label={label} href={href} />
@@ -144,8 +157,8 @@ export default function Footer() {
 					</nav>
 
 					<nav>
-						<h3 className="text-[16px] font-semibold text-white">Company</h3>
-						<ul className="mt-5 space-y-3">
+						<h3 className="text-sm font-semibold text-white">Company</h3>
+						<ul className="mt-5 space-y-2">
 							{companyLinks.map(({ label, href }) => (
 								<li key={label}>
 									<ExternalLink label={label} href={href} />
@@ -155,8 +168,8 @@ export default function Footer() {
 					</nav>
 
 					<nav>
-						<h3 className="text-[16px] font-semibold text-white">Legal</h3>
-						<ul className="mt-5 space-y-3">
+						<h3 className="text-sm font-semibold text-white">Legal</h3>
+						<ul className="mt-5 space-y-2">
 							{legalLinks.map(({ label, href }) => (
 								<li key={label}>
 									<ExternalLink label={label} href={href} />
@@ -174,9 +187,8 @@ export default function Footer() {
 								type="button"
 								onClick={() => selectTheme("system")}
 								aria-label="Use system theme"
-								className={`grid h-8 w-8 place-items-center rounded-md text-xs transition ${
-									themeMode === "system" ? "bg-[#2b3a52] text-(--accent-color)" : "text-slate-300 hover:bg-[#26354d]"
-								}`}
+								className={`grid h-8 w-8 place-items-center rounded-md text-xs transition ${themeMode === "system" ? "bg-[#2b3a52] text-(--accent-color)" : "text-slate-300 hover:bg-[#26354d]"
+									}`}
 							>
 								▣
 							</button>
@@ -184,9 +196,8 @@ export default function Footer() {
 								type="button"
 								onClick={() => selectTheme("light")}
 								aria-label="Use light theme"
-								className={`grid h-8 w-8 place-items-center rounded-md text-xs transition ${
-									themeMode === "light" ? "bg-[#2b3a52] text-(--accent-color)" : "text-slate-300 hover:bg-[#26354d]"
-								}`}
+								className={`grid h-8 w-8 place-items-center rounded-md text-xs transition ${themeMode === "light" ? "bg-[#2b3a52] text-(--accent-color)" : "text-slate-300 hover:bg-[#26354d]"
+									}`}
 							>
 								☼
 							</button>
@@ -194,9 +205,8 @@ export default function Footer() {
 								type="button"
 								onClick={() => selectTheme("dark")}
 								aria-label="Use dark theme"
-								className={`grid h-8 w-8 place-items-center rounded-md text-xs transition ${
-									themeMode === "dark" ? "bg-[#2b3a52] text-(--accent-color)" : "text-slate-300 hover:bg-[#26354d]"
-								}`}
+								className={`grid h-8 w-8 place-items-center rounded-md text-xs transition ${themeMode === "dark" ? "bg-[#2b3a52] text-(--accent-color)" : "text-slate-300 hover:bg-[#26354d]"
+									}`}
 							>
 								◐
 							</button>
@@ -206,16 +216,17 @@ export default function Footer() {
 					<div className="flex items-center gap-3">
 						<p className="text-base font-semibold text-white">Follow us on:</p>
 						<div className="flex items-center gap-1">
-							<SocialIcon label="X">X</SocialIcon>
-							<SocialIcon label="Discord">◉</SocialIcon>
-							<SocialIcon label="YouTube">▶</SocialIcon>
+							<SocialIcon label="Facebook"><FacebookIcon /></SocialIcon>
+							<SocialIcon label="Instagram"><InstagramIcon /></SocialIcon>
+							<SocialIcon label="YouTube"><YouTubeIcon /></SocialIcon>
+							<SocialIcon label="LinkedIn"><LinkedInIcon /></SocialIcon>
 						</div>
 					</div>
 				</div>
 
-				<div className="mt-7 flex flex-wrap items-center justify-between gap-5 border-t border-[#1b2b40] pt-6">
-					<p className="text-[12px] text-slate-400">
-						© 2024 - {currentYear} indishaTech, Inc. All rights reserved. indishaTech and Sevalla are registered trademarks.
+				<div className="mt-7 flex flex-wrap items-center justify-center gap-5 pt-6">
+					<p className="text-xs text-slate-400">
+						© 2024 - {currentYear} aurumxai, Inc. All rights reserved. aurumxai and Sevalla are registered trademarks.
 					</p>
 
 					{/* <div className="inline-flex items-center gap-2 rounded-full border border-[#2a3d56] bg-[#0a1424] px-4 py-1.5 text-sm text-slate-200">

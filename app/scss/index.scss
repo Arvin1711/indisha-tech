@@ -1,40 +1,39 @@
 .circle-section {
-    background: #eceff9;
+  background: rgb(247 249 255);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: -15%;
+  right: 30%;
+
+  #circle {
     position: absolute;
+    overflow: hidden;
     bottom: 9%;
-    left: 60%;
-    width: 100px;
-    height: 100px;
+    left: 10%;
+    background: rgb(247 249 255);
     border-radius: 50%;
+    fill: blue;
+    border: 1px solid blue;
+  }
 
+  #circle text {
+    font-size: 11px;
+    font-weight: 400;
+  }
 
-    #circle {
-        position: absolute;
-        overflow: hidden;
-        bottom: 9%;
-        left: 10%;
-        background: #eceff9;
-        border-radius: 50%;
-        fill: blue;
-        border: 1px solid blue;
+  #circle svg {
+    animation: rotateText 10s linear infinite;
+  }
+
+  @keyframes rotateText {
+    from {
+      transform: rotate(0deg);
     }
 
-    #circle text {
-        font-size: 11px;
-        font-weight: 400;
+    to {
+      transform: rotate(360deg);
     }
-
-    #circle svg {
-        animation: rotateText 10s linear infinite;
-    }
-
-    @keyframes rotateText {
-        from {
-            transform: rotate(0deg);
-        }
-
-        to {
-            transform: rotate(360deg);
-        }
-    }
+  }
 }

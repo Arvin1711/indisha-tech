@@ -4,7 +4,7 @@
 :root {
   --app-bg: #ffffff;
   --app-text: #171717;
-  --accent-color: #f08c54;
+  --accent-color: #ff5f38;
   --muted-color: #62647b;
   color-scheme: light;
 }
@@ -12,7 +12,7 @@
 body {
   background: var(--app-bg);
   color: var(--app-text);
-  font-family: var(--font-geist-sans), sans-serif;
+  font-family: var(--font-mulish), sans-serif;
   transition: background-color 180ms ease, color 180ms ease;
 }
 
